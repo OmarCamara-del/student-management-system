@@ -66,4 +66,16 @@ const User = sequelize.define(
   }
 );
 
+const Course = require("./Course");
+const Enrollment = require("./Enrollment");
+
+User.belongsToMany(Course, {
+    through: Enrollment,
+    foreignKey: "studentId"
+});
+
+Course.belongsToMany(User, {
+    through: Enrollment,
+    foreignKey: "courseId"
+});
 module.exports = User;

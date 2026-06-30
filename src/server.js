@@ -1,11 +1,17 @@
 require("dotenv").config();
 
+
 const app = require("./app");
 const connectDB = require("./config/testConnection");
 const sequelize = require("./config/database");
 
 // Register models
 require("./models/User");
+require("./models/Course");
+require("./models/Enrollment");
+require("./models/Grade");
+
+sequelize.sync();
 
 const PORT = process.env.PORT || 5000;
 
